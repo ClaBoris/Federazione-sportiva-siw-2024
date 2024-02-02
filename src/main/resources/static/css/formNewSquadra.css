@@ -1,0 +1,32 @@
+body {
+	height: 80%;
+	background-image: url('../images/formNewSquadra_admin.jpg')!important;
+ 	background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Aggiungi questa linea */
+}
+
+.text-white {
+	font-family: 'Chakra Petch';
+	font-size: 262%;
+}
+
+.text-home {
+	font-family: 'Chakra Petch';
+	font-size: 200%;
+	color:  white ;
+	text-decoration: none;
+}
+
+form{
+display: flex;
+flex-direction: column;
+border: 3px solid#171717;
+border-radius: 1rem;
+background-color:#171717;
+width: 40%;
+padding: 3%;
+margin: 5%;
+margin-left: 30%;
+margin-right: 5%;
+}

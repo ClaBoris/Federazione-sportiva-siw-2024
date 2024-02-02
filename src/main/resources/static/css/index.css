@@ -1,0 +1,30 @@
+.text-white {
+	font-family: 'Chakra Petch';
+	font-size: 262%;
+}
+
+.text-home {
+	font-family: 'Chakra Petch';
+	font-size: 200%;
+	color: white;
+	text-decoration: none;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-image: url('../images/index.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100vh;
+}
+
+.scritta{
+	font-family: 'Chakra Petch';
+	font-size: 200%;
+	color: white;
+	 text-align: center;
+	margin-right: 50%;
+	text-shadow:2px 2px 4px rgba(255, 255, 255, 0.5);
+}

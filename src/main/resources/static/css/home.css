@@ -1,0 +1,29 @@
+body {
+	height: 80%;
+	background-image: url('../images/sfondo_home_user.jpg');
+	background-size: cover;
+
+}
+
+.text-white {
+	font-family: 'Chakra Petch';
+	font-size: 262%;
+}
+
+.text-home {
+	font-family: 'Chakra Petch';
+	font-size: 200%;
+	color: white;
+	text-decoration: none;
+}
+
+.card {
+	margin-block-end: 2%;
+	margin-left: 4%;
+	/*background-color: rgba(255, 255, 255, 0.6) !important;*/
+	background: linear-gradient(to right, blue, red);
+	/* Gradiente di colore 
+	opacity: 0.5;
+	/* Opacità del 60% */
+	margin-right: 62%;
+}
