@@ -49,6 +49,7 @@
 					<div class="card-body">
 						<h5 class="card-title" th:text="${giocatore.nome + ' ' + giocatore.cognome}" style="color: black; font-family: 'Chakra Petch';">Nome giocatore</h5>
 						<h6 class="card-title" th:text="${giocatore.ruolo}" style="color: black; font-family: 'Chakra Petch';">Ruolo</h6>
+						<!--<h6 class="card-title" th:text="${giocatore.squadra.nome}" style="color: black; font-family: 'Chakra Petch';">Squadra</h6>-->
 						<div class="card-button">
 							<a th:href="@{'/president/formModificaGiocatore/' + ${giocatore.id}}" class="btn btn-warning" id="link-btn" style="color: black;font-family: 'Chakra Petch'; line-height: 8.5px;"> modifica</a>
 						</div>

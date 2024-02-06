@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,12 +22,11 @@ public class Squadra {
 	private String nome;
 	
 	@Column(name = "anno_fondazione")
-	private int annoFondazione;
+	private LocalDate annoFondazione;
 	
-	@Column(name = "indirizzo")
+	@Column(name = "indirizzo", columnDefinition = "TEXT")
 	private String indirizzoSede;
 	
-	//@Column(name = "presidente")
 	@OneToOne
 	private Presidente presidente;
 	
@@ -50,11 +50,11 @@ public class Squadra {
 		this.nome = nome;
 	}
 
-	public int getAnnoFondazione() {
+	public LocalDate getAnnoFondazione() {
 		return annoFondazione;
 	}
 
-	public void setAnnoFondazione(int annoFondazione) {
+	public void setAnnoFondazione(LocalDate annoFondazione) {
 		this.annoFondazione = annoFondazione;
 	}
 

@@ -48,13 +48,13 @@
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Cognome giocatore:</label>
 				<input type="text" th:field="${giocatore.cognome}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Data di nascita:</label>
-				<input type="date" th:field="${giocatore.birthDate}" class="input-text form-control">
+				<input type="text" th:field="${giocatore.birthDate}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Ruolo:</label>
 				<input type="text" th:field="${giocatore.ruolo}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Inizio tesseramento:</label>
-				<input type="date" th:field="${giocatore.inizioTesseramento}" class="input-text form-control">
+				<input type="text" th:field="${giocatore.inizioTesseramento}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Fine tesseramento:</label>
-				<input type="date" th:field="${giocatore.fineTesseramento}" class="input-text form-control">
+				<input type="text" th:field="${giocatore.fineTesseramento}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Aggiungi squadra:</label>
 				<div th:if="${squadre}"> 
 					<select id="squadra" th:field="${giocatore.squadra}" class="input-select" style="color: #fbba00; font-family: 'Chakra Petch';">

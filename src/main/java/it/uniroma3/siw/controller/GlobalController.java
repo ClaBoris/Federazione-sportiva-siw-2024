@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Presidente;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.GiocatoreRepository;
 import it.uniroma3.siw.repository.PresidenteRepository;
@@ -83,8 +84,13 @@ public class GlobalController {
 			return "/admin/admin_home.html";//e restituisce la vista "/admin/admin_home.html".
 		}
 		if(credentials != null && credentials.getRole().equals(Credentials.PRESIDENT_ROLE)) {
-			model.addAttribute("squadre", this.squadraRepository.findAll());
-			return "/president/president_home.html";
+			
+			Presidente pres = this.presidenteRepository.findPresidente(userDetails.getUsername());
+			if(pres!=null) {
+				model.addAttribute("squadre", this.squadraRepository.findAll());	
+				return "/president/president_home.html";
+			}
+			
 		}
 		/*model.addAttribute("userDetails", userDetails);*/
 		model.addAttribute("squadre", this.squadraRepository.findAll());
@@ -127,6 +133,7 @@ public class GlobalController {
 		model.addAttribute("presidenti", this.presidenteRepository.findAll());
 		return "elenco_presidenti.html";
 	}
+	
 
 	@GetMapping("/user_home")
 	public String show_user_home(Model model) {
@@ -139,5 +146,13 @@ public class GlobalController {
 		model.addAttribute("giocatori", this.giocatoreRepository.findAll());
 		return "elenco_giocatori.html";
 	}
+	
+	
+	/***ORDINAMENTO CRESCENTE DI NOME DEI PRESIDENTI***/		
+//	@GetMapping("/presidenti")
+//	public String show_elenco_presidenti(Model model) {
+//		model.addAttribute("presidenti", this.presidenteRepository.findAllInNameOrderASC());
+//		return "elenco_presidenti.html";
+//	}
 
 }

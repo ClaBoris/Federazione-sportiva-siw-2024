@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.model.Presidente;
 import it.uniroma3.siw.model.Squadra;
+import it.uniroma3.siw.repository.GiocatoreRepository;
 import it.uniroma3.siw.repository.PresidenteRepository;
+import it.uniroma3.siw.repository.SquadraRepository;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -14,6 +16,12 @@ public class PresidenteService {
 	@Autowired 
 	private PresidenteRepository presidenteRepository;
 	
+	@Autowired 
+	private GiocatoreRepository giocatoreRepository;
+	
+	@Autowired 
+	private SquadraRepository squadraRepository;
+	
 	
 	@Transactional
 	public void save(Presidente presidente){
@@ -21,17 +29,18 @@ public class PresidenteService {
 	}
 	
 	
-//	@Transactional
-//	public void rimuoviGiocatori(Long squadraId) {
-//		// Ottieni la squadra
-//		Squadra squadra= squadraRepository.findById(squadraId).orElse(null);
-//
-//		if (squadra != null) {
-//			// Elimina i giocatori associati alla squadra
-//			giocatoreRepository.eliminaDallaSquadraId(squadraId);
-//
-//			// Elimina la squadra
-//			//squadraRepository.delete(squadra);
-//		}
-//	}
+	@Transactional
+	public void rimuoviGiocatori(Long squadraId) {
+		// Ottieni la squadra
+		Squadra squadra= squadraRepository.findById(squadraId).orElse(null);
+
+		if (squadra != null) {
+			// Elimina i giocatori associati alla squadra
+			giocatoreRepository.eliminaDallaSquadraId(squadraId);
+
+			// Elimina la squadra
+			squadraRepository.delete(squadra);
+		}
+	}
+	
 }

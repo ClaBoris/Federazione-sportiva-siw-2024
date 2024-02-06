@@ -1,0 +1,24 @@
+.squadra_personale {
+    margin-left: 262px;
+    margin-right: 323px;
+    margin-top: 12px;
+}
+
+body {
+	height: 80%;
+	background-image: url('../images/sfondo_president_home.jpg');
+	background-size: cover;
+
+}
+
+.text-white {
+	font-family: 'Chakra Petch';
+	font-size: 262%;
+}
+
+.text-home {
+	font-family: 'Chakra Petch';
+	font-size: 200%;
+	color: white;
+	text-decoration: none;
+}

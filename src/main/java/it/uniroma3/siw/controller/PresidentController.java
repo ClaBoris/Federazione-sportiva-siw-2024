@@ -3,6 +3,7 @@ package it.uniroma3.siw.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,11 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Giocatore;
+import it.uniroma3.siw.model.Presidente;
+import it.uniroma3.siw.model.Squadra;
 import it.uniroma3.siw.repository.GiocatoreRepository;
 import it.uniroma3.siw.repository.PresidenteRepository;
 import it.uniroma3.siw.repository.SquadraRepository;
 import it.uniroma3.siw.service.GiocatoreService;
-import it.uniroma3.siw.service.SquadraService;
+
+import it.uniroma3.siw.service.UserService;
 import it.uniroma3.siw.validator.GiocatoreValidator;
 
 @Controller
@@ -28,7 +32,7 @@ public class PresidentController {
 	private GiocatoreService giocatoreService;
 	
 	@Autowired
-	private SquadraService squadraService;
+	private UserService userService;
 	
 	@Autowired
 	private GiocatoreRepository giocatoreRepository;
@@ -52,6 +56,23 @@ public class PresidentController {
 		model.addAttribute("squadre", this.squadraRepository.findAll());
 		return "/president/elenco_squadre.html";
 	}	
+	
+	@GetMapping("/president/squadra_personale")
+	public String squadra_personale(Model model) {
+		UserDetails userDetails = this.userService.getUserDetails();
+		String username = userDetails.getUsername();
+		Presidente presidente = this.presidenteRepository.findPresidente(username);
+		Squadra squadra = this.squadraRepository.findSquadra(presidente);
+		model.addAttribute("squadra", squadra);
+		return "/president/squadra_personale.html";
+	}	
+	
+	/***ORDINAMENTO CRESCENTE DI NOME DELLE SQUADRE***/	
+//	@GetMapping("/president/elenco_squadre")
+//	public String elenco_squadre(Model model) {
+//		model.addAttribute("squadre", this.squadraRepository.findAllInNameOrderASC());
+//		return "/president/elenco_squadre.html";
+//	}	
 	
 	@GetMapping("/president/giocatori")
 	public String elenco_giocatori(Model model) {
@@ -115,7 +136,7 @@ public class PresidentController {
 	public String modificaGiocatore(@ModelAttribute("giocatore") Giocatore giocatore,@PathVariable("id") Long giocatoreId,  Model model){
 		this.giocatoreService.edit(giocatore, giocatoreId);
 		model.addAttribute("giocatori", this.giocatoreRepository.findAll());
-		return "/president/giocatori.html";
+		return "/president/giocatori_con_squadra.html";
 	}	
 	
 	

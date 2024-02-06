@@ -43,12 +43,14 @@ public class SquadraService {
         Optional<Squadra> squadraOptional = squadraRepository.findById(squadraId);
         return squadraOptional.orElse(null);
     }
+    
+    
 	public void edit(Squadra squadra, Long squadraId) {
 		// TODO Auto-generated method stub
 		Squadra squadra_personale= this.squadraRepository.findById(squadraId).orElse(null);
 		squadra_personale.setNome(squadra.getNome());
 		squadra_personale.setAnnoFondazione(squadra.getAnnoFondazione());
-		squadra_personale.setIndirizzoSede(squadra.getIndirizzoSede());
+		//squadra_personale.setIndirizzoSede(squadra.getIndirizzoSede()); levo questo set così almeno evito di non avere l'indirizzo
 		squadra_personale.setPresidente(squadra.getPresidente());
 		this.squadraRepository.save(squadra_personale);
 	}

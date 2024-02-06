@@ -56,9 +56,8 @@
 						<td th:text="${squadra.nome}" style="color: #E5E5E5; font-family: 'Chakra Petch';">Nome squadra</td>
 						<td th:text="${squadra.annoFondazione}" style="color: #E5E5E5; font-family: 'Chakra Petch';">Anno di fondazione</td>
 						<td th:text="${squadra.indirizzoSede}" style="color: #E5E5E5; font-family: 'Chakra Petch';">Indirizzo sede</td>
-						<!--non stampa nome e cognome e va in errore 500 se scritto così, altrimenti stampa indirizzo di memoria del presidente
-						<td th:text="${squadra.presidente.nome + ' ' + squadra.presidente.cognome}" style="color: #E5E5E5; font-family: 'Chakra Petch';">Presidente</td>-->
-						<td th:text="${squadra.presidente}" style="color: #E5E5E5; font-family: 'Chakra Petch';">Presidente</td>
+						<td th:if="${squadra.presidente}" th:text="${squadra.presidente.nome} + ' ' + ${squadra.presidente.cognome}" style="color: #E5E5E5; font-family: 'Chakra Petch';">Presidente</td>	
+						<td th:unless="${squadra.presidente}">Nessun Presidente</td>			
 						<td>
 							<a th:href="@{'/admin/squadra/' + ${squadra.id} + '/giocatori'}" style="color: #E5E5E5; font-family: 'Chakra Petch';">Giocatori</a>
 						</td>

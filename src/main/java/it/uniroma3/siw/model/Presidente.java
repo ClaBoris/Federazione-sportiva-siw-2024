@@ -8,7 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+
 
 @Entity
 public class Presidente {
@@ -34,12 +34,13 @@ public class Presidente {
 	@Column(name = "ruolo")
 	private String ruolo;
 
+	@Column(name = "username")
+	private String username;
+	
+
 	public Long getId() {
 		return id;
 	}
-
-	@OneToOne(mappedBy = "presidente")
-	private Squadra squadra;
 
 
 	public void setId(Long id) {
@@ -54,13 +55,7 @@ public class Presidente {
 		this.nome = nome;
 	}
 
-	public Squadra getSquadra() {
-		return squadra;
-	}
 
-	public void setSquadra(Squadra squadra) {
-		this.squadra = squadra;
-	}
 
 	public String getCognome() {
 		return cognome;
@@ -101,10 +96,21 @@ public class Presidente {
 	public void setRuolo(String ruolo) {
 		this.ruolo = ruolo;
 	}
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(codiceFiscale, cognome, dataNascita, id, luogoNascita, nome);
+		return Objects.hash(codiceFiscale, cognome, dataNascita, id, nome, username);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -117,6 +123,9 @@ public class Presidente {
 		Presidente other = (Presidente) obj;
 		return Objects.equals(codiceFiscale, other.codiceFiscale) && Objects.equals(cognome, other.cognome)
 				&& Objects.equals(dataNascita, other.dataNascita) && Objects.equals(id, other.id)
-				&& Objects.equals(luogoNascita, other.luogoNascita) && Objects.equals(nome, other.nome);
+				&& Objects.equals(nome, other.nome) && Objects.equals(username, other.username);
 	}
+
+
+	
 }
