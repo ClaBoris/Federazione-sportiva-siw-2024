@@ -144,7 +144,7 @@ public class PresidentController {
 	public String rimuoviGiocatore (@PathVariable("giocatoreId") Long giocatoreId, Model model) {
 			giocatoreService.rimuoviGiocatore(giocatoreId);
 			model.addAttribute("giocatori", giocatoreService.getAllGiocatori());
-			return "/president/giocatori_della_squadra.html";
+			return "/president/squadra_personale.html";
 	}
 	
 }

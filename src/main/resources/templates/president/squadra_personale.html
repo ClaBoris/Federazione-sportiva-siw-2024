@@ -55,8 +55,11 @@
 				<h6 th:text="${squadra.indirizzoSede}" class="input-text form-control"></h6>
 				<label style="color: white; font-family: 'Chakra Petch';">Giocatori:</label>
 				<div th:if="${!squadra.giocatori.isEmpty()}">
-					<ul th:each="g : ${squadra.giocatori}" style="color: white; font-family: 'Chakra Petch';">
-						<li th:text="${g.nome}+' '+${g.cognome}"></li>
+					<ul>
+						<li th:each="g : ${squadra.giocatori}" style="color: white; font-family: 'Chakra Petch';">
+						    <h6><span th:text="${g.nome}+' '+${g.cognome}"></span></h6>
+						    <a th:href="@{'/president/rimuoviGiocatore/' + ${g.id}}" class="btn" style="color: white; font-family: 'Chakra Petch';">Elimina</a>
+					    </li>
 					</ul>
 				</div>
 				<div th:if="${squadra.giocatori.isEmpty()}">
