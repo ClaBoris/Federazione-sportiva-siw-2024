@@ -85,9 +85,13 @@ public class AdminController {
 			this.squadraService.save(squadra);
 			model.addAttribute("squadre", this.squadraRepository.findAll());
 			return "/admin/admin_home.html";
-		}else {
-			return "/admin/formNewSquadra.html";
+		}else{
+			if(bindingResult.hasErrors()) {
+				model.addAttribute("formNewSquadraNome", "Nome squadra già in uso");
+			}
 		}
+		return "/admin/formNewSquadra.html";
+
 	}
 
 	@GetMapping("/admin/rimuoviSquadraEGiocatori/{squadraId}")
@@ -122,8 +126,8 @@ public class AdminController {
 			return "/admin/squadre.html";
 		}
 	}
-	
-	
+
+
 
 	@PostMapping("/admin/newSquadra/{id}")
 	public String modificaSquadra(@ModelAttribute("squadra") Squadra squadra,@PathVariable("id") Long squadraId,  Model model){
@@ -169,13 +173,13 @@ public class AdminController {
 		model.addAttribute("presidenti", this.presidenteRepository.findAll());
 		return "/admin/presidenti.html";
 	}
-	
-/***ORDINAMENTO CRESCENTE DI NOME DEI PRESIDENTI***/
-//	@GetMapping("admin/presidenti")
-//	public String elenco_presidenti(Model model) {
-//		model.addAttribute("presidenti", this.presidenteRepository.findAllWithSquadra());
-//		return "/admin/presidenti.html";
-//	}
+
+	/***ORDINAMENTO CRESCENTE DI NOME DEI PRESIDENTI***/
+	//	@GetMapping("admin/presidenti")
+	//	public String elenco_presidenti(Model model) {
+	//		model.addAttribute("presidenti", this.presidenteRepository.findAllWithSquadra());
+	//		return "/admin/presidenti.html";
+	//	}
 
 
 

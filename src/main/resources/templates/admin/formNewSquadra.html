@@ -39,22 +39,30 @@
 		</button>
 	</nav>
 </div>
+
 <body>
 	<div class="main-container">
 		<div class="form-container">
 			<form th:action="@{/admin/newSquadra}" method="POST">
 				<h1 style="color: white; font-family: 'Chakra Petch';">Inserisci una nuova squadra</h1>
-	
+
 				<label style="color: white; font-family: 'Chakra Petch';">Nome squadra:</label>
 				<input type="text" th:field="${squadra.nome}" class="input-text form-control">
+				</span>
+				<span th:if="${#fields.hasErrors('squadra.nome')}" th:errors="${squadra.nome}" th:style="'color:red'">
+				</span>
+				<span th:if="${formNewSquadraNome}" th:text="${formNewSquadraNome}" th:style="'color:red'">
+				</span>
 				<label style="color: white; font-family: 'Chakra Petch';">Anno Fondazione:</label>
 				<input required type="date" th:field="${squadra.annoFondazione}" class="input-text form-control">
 				<label style="color: white; font-family: 'Chakra Petch';">Indirizzo sede:</label>
 				<input type="text" th:field="${squadra.indirizzoSede}" class="input-text form-control">
 				<div class="btn-container">
-					<button type="submit" class="btn btn-submit" style="color: white; font-family: 'Chakra Petch';">Aggiungi</button>
+					<button type="submit" class="btn btn-submit"
+						style="color: white; font-family: 'Chakra Petch';">Aggiungi</button>
 				</div>
 			</form>
 		</div>
 </body>
+
 </html>

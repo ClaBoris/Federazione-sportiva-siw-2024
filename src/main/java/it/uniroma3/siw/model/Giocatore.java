@@ -9,22 +9,31 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Giocatore {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@NotBlank
 	@Column(name = "nome_giocatore")
 	private String nome;
+	
+	@NotBlank
 	@Column(name = "cognome_giocatore")
 	private String cognome;
 	@Column(name = "ruolo")
 	private String ruolo;
 	@Column(name = "data_nascita")
 	private LocalDate birthDate;
+	
+	@NotBlank
 	@Column(name = "inizio_tex")
 	private LocalDate inizioTesseramento;
+	
+	@NotBlank
 	@Column(name = "fine_tex")
 	private LocalDate fineTesseramento;
 

@@ -27,7 +27,7 @@ public class GiocatoreValidator implements Validator{
 		  Giocatore giocatore= (Giocatore) target;
 	        if(giocatore.getNome() != null
 	            && this.giocatoreRepository.existsByNome(giocatore.getNome())){
-	            errors.rejectValue("nome", "giocatore.duplicate", "Il nome del giocatore è già in uso.");
+	            errors.reject("giocatore.duplicate");
 	        }
 		
 	}

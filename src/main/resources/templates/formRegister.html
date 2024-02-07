@@ -40,23 +40,39 @@
 
 <body>
 	<form th:action="@{/register}" method="POST">
+		
 		<h1 style="color: #fbba00; font-family: 'Chakra Petch';">Registrati per entrare nella nostra community</h1>
 		<label style="color: #fbba00; font-family: 'Chakra Petch';">Nome:</label>
 		<input type="text" th:field="${user.name}" class="input-text form-control">
+		</span>
+		<span th:if="${#fields.hasErrors('user.name')}" th:errors="${user.name}" th:style="'color:red'">
+		</span>
 		<label style="color: #fbba00; font-family: 'Chakra Petch';">Cognome:</label>
 		<input type="text" th:field="${user.surname}" class="input-text form-control">
+		</span>
+		<span th:if="${#fields.hasErrors('user.surname')}" th:errors="${user.surname}" th:style="'color:red'">
+		</span>
 		<label style="color: #fbba00; font-family: 'Chakra Petch';">Email:</label>
-		<input type="text" th:field="${user.email}" class="input-text form-control">
+		<input type="email" th:field="${user.email}" class="input-text form-control">
+		<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}"
+			th:style="'color:red'">
+		</span>
+		<span th:if="${registrationErrorUser}" th:text="${registrationErrorUser}"
+			th:style="'color:red'">
+		</span>
 		<label style="color: #fbba00; font-family: 'Chakra Petch';">Username:</label>
 		<input type="text" th:field="*{credentials.username}" class="input-text form-control">
+		<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username.duplicate}"
+			th:style="'color:red'">
+		</span>
+		<span th:if="${registrationError}" th:text="${registrationError}"
+			th:style="'color:red'">
+		</span>
 		<label style="color: #fbba00; font-family: 'Chakra Petch';">Password:</label>
 		<input type="password" th:field="${credentials.password}" class="input-text form-control">
-		<!--<label style="color: #fbba00; font-family: 'Chakra Petch';">Ruolo:</label>-->
-		<!--<select class="form-select">
-			<option value="USER_ROLE">Utente Normale</option>
-			<option value="PRESIDENT_ROLE">Presidente</option>
-			<option value="ADMIN_ROLE">Amministratore</option>
-		</select>-->
+		<span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"
+			th:style="'color:red'">
+		</span>
 		<div class="btn-container">
 			<button type="submit" class="btn btn-submit"
 				style="color: #fbba00; font-family: 'Chakra Petch';">Registrati</button>

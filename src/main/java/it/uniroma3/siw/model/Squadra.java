@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Squadra {
@@ -18,12 +19,15 @@ public class Squadra {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@NotBlank
 	@Column(name = "nome_team")
 	private String nome;
 	
+	@NotBlank
 	@Column(name = "anno_fondazione")
 	private LocalDate annoFondazione;
 	
+	@NotBlank
 	@Column(name = "indirizzo", columnDefinition = "TEXT")
 	private String indirizzoSede;
 	

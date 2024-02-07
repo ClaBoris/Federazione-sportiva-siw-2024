@@ -26,7 +26,7 @@ public class PresidenteValidator implements Validator  {
 		  Presidente presidente= (Presidente) target;
 	        if(presidente.getNome() != null
 	            && this.presidenteRepository.existsByNome(presidente.getNome())){
-	            errors.rejectValue("nome", "presidente.duplicate", "Il nome del presidente è già in uso.");
+	            errors.reject("presidente.duplicate");
 	        }
 		
 	}
