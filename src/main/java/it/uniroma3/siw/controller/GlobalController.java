@@ -153,11 +153,4 @@ public class GlobalController {
 	}
 
 
-	/***ORDINAMENTO CRESCENTE DI NOME DEI PRESIDENTI***/		
-	//	@GetMapping("/presidenti")
-	//	public String show_elenco_presidenti(Model model) {
-	//		model.addAttribute("presidenti", this.presidenteRepository.findAllInNameOrderASC());
-	//		return "elenco_presidenti.html";
-	//	}
-
 }

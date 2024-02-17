@@ -40,31 +40,21 @@
 <body>
 		<div class="main-container">
 		<div class="form-container">
-				<form th:action="@{/president/newGiocatore/} + ${giocatore.id}" th:object="${giocatore}" method="POST">
-				<h1 style="color: #fbba00; font-family: 'Chakra Petch';">Inserisci un nuovo giocatore</h1>
+				<form th:action="@{/president/newGiocatore/} + ${giocatore.id}" th:object="${giocatore}" th:method="POST">
+				<h1 style="color: #fbba00; font-family: 'Chakra Petch';">Modifica il giocatore</h1>
 	
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Nome giocatore:</label>
 				<input type="text" th:field="${giocatore.nome}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Cognome giocatore:</label>
 				<input type="text" th:field="${giocatore.cognome}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Data di nascita:</label>
-				<input type="text" th:field="${giocatore.birthDate}" class="input-text form-control">
+				<input type="date" th:field="${giocatore.birthDate}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Ruolo:</label>
 				<input type="text" th:field="${giocatore.ruolo}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Inizio tesseramento:</label>
-				<input type="text" th:field="${giocatore.inizioTesseramento}" class="input-text form-control">
+				<input type="date" th:field="${giocatore.inizioTesseramento}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Fine tesseramento:</label>
-				<input type="text" th:field="${giocatore.fineTesseramento}" class="input-text form-control">
-				<label style="color: #fbba00; font-family: 'Chakra Petch';">Aggiungi squadra:</label>
-				<div th:if="${squadre}"> 
-					<select id="squadra" th:field="${giocatore.squadra}" class="input-select" style="color: #fbba00; font-family: 'Chakra Petch';">
-						<option value="">seleziona</option>
-						<option th:each="squadra: ${squadre}" th:value="${squadra.id}" th:text="${squadra.nome}"></option>
-					</select>
-				</div>
-				<div th:unless="${squadre}">
-					<h6 style="color: #fbba00; font-family: 'Chakra Petch';">non ci sono squadre nel sistema</h6>
-				</div>
+				<input type="date" th:field="${giocatore.fineTesseramento}" class="input-text form-control">
 				<div class="btn-container">
 					<button type="submit" class="btn btn-submit" style="color: #fbba00; font-family: 'Chakra Petch';">Aggiungi</button>
 				</div>

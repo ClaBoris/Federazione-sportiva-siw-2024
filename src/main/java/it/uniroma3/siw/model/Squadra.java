@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,8 +25,9 @@ public class Squadra {
 	@Column(name = "nome_team")
 	private String nome;
 	
-	@NotBlank
+	
 	@Column(name = "anno_fondazione")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate annoFondazione;
 	
 	@NotBlank

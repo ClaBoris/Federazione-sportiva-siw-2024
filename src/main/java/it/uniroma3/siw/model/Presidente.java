@@ -3,11 +3,14 @@ package it.uniroma3.siw.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 
 @Entity
@@ -15,6 +18,7 @@ public class Presidente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	@Column(name = "nome_pres")
 	private String nome;
 
@@ -24,6 +28,7 @@ public class Presidente {
 	@Column(name = "cf")
 	private String codiceFiscale;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "data_nascita")
 	private LocalDate dataNascita;
 
@@ -34,6 +39,7 @@ public class Presidente {
 	@Column(name = "ruolo")
 	private String ruolo;
 
+	@NotBlank
 	@Column(name = "username")
 	private String username;
 	

@@ -3,6 +3,8 @@ package it.uniroma3.siw.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,23 +19,26 @@ public class Giocatore {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotBlank
+//	@NotBlank
 	@Column(name = "nome_giocatore")
 	private String nome;
 	
-	@NotBlank
+//	@NotBlank
 	@Column(name = "cognome_giocatore")
 	private String cognome;
+	
 	@Column(name = "ruolo")
 	private String ruolo;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "data_nascita")
 	private LocalDate birthDate;
 	
-	@NotBlank
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "inizio_tex")
 	private LocalDate inizioTesseramento;
 	
-	@NotBlank
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "fine_tex")
 	private LocalDate fineTesseramento;
 

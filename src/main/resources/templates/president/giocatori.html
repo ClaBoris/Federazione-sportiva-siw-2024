@@ -29,7 +29,6 @@
 			<h4 class="text-white">Federazione sportiva</h4>
 			<li><a class="text-home" aria-current="page" href="/president/president_home">Home</a></li>
 			<li><a class="text-home" aria-current="page" href="/president/elenco_squadre">Dettagli delle squadre</a></li>
-			<li><a class="text-home" aria-current="page" href="/president/formNewGiocatore">Aggiungi giocatore</a></li>
 		</div>
 	</div>
 	<nav class="navbar navbar-dark" style="color: black">
@@ -49,13 +48,14 @@
 					<div class="card-body">
 						<h5 class="card-title" th:text="${giocatore.nome + ' ' + giocatore.cognome}" style="color: black; font-family: 'Chakra Petch';">Nome giocatore</h5>
 						<h6 class="card-title" th:text="${giocatore.ruolo}" style="color: black; font-family: 'Chakra Petch';">Ruolo</h6>
-						<!--<h6 class="card-title" th:text="${giocatore.squadra.nome}" style="color: black; font-family: 'Chakra Petch';">Squadra</h6>-->
-						<div class="card-button">
-							<a th:href="@{'/president/formModificaGiocatore/' + ${giocatore.id}}" class="btn btn-warning" id="link-btn" style="color: black;font-family: 'Chakra Petch'; line-height: 8.5px;"> modifica</a>
+						<div th:if="${giocatore.squadra}">
+						<h6 class="card-title" th:text="${giocatore.squadra.nome}" style="color: black; font-family: 'Chakra Petch';">Squadra</h6>	
 						</div>
-						<!--<div class="card-button-delete">
-							<a th:href="@{'/president/rimuoviGiocatore/' + ${giocatore.id}}" class="btn btn-warning" id="link-btn" style="color: black;font-family: 'Chakra Petch';line-height: 8.5px;"> elimina</a>
-						</div>-->
+						<div th:unless="${giocatore.squadra}">
+							<h6>Il giocatore non appartiene a nessuna squadra</h6>
+							<a  th:href="@{'/president/formModificaGiocatore/' + ${giocatore.id}}" class="btn"
+								style="background-color: #fbba00; font-family: 'Chakra Petch';">Modifica</a>
+						</div>
 					</div>
 				</div>
 			</div>

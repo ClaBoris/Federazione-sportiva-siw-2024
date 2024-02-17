@@ -39,6 +39,9 @@
 </div>
 <body>
 	<div class="main-container">
+		<h1 style="color: #FFD700; font-family: 'Chakra Petch';">
+			Elenco delle squadre : 
+		</h1>
 		<div class="container-main-scroller">
 			<table class="squadre-table">
 				<thead>
@@ -62,7 +65,7 @@
 							<a th:href="@{'/admin/squadra/' + ${squadra.id} + '/giocatori'}" style="color: #E5E5E5; font-family: 'Chakra Petch';">Giocatori</a>
 						</td>
 					<td>
-							<a th:href="@{'/admin/rimuoviSquadraEGiocatori/' + ${squadra.id}}" class="btn"
+							<a th:href="@{'/admin/rimuoviSquadra/' + ${squadra.id}}" class="btn"
 								id="link-btn" style="color: #E5E5E5; font-family: 'Chakra Petch';">Elimina</a>
 						</td>
 					</tr>

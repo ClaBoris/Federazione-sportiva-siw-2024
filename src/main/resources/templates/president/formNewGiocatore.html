@@ -40,13 +40,21 @@
 <body>
 	<div class="main-container">
 		<div class="form-container">
-			<form th:action="@{/president/newGiocatore}" method="POST">
+			<form th:action="@{/president/formNewGiocatore/} + ${squadraId}" method="POST">
 				<h1 style="color: white; font-family: 'Chakra Petch';">Inserisci un nuovo giocatore</h1>
 	
 				<label style="color: white; font-family: 'Chakra Petch';">Nome giocatore:</label>
 				<input type="text" th:field="${giocatore.nome}" class="input-text form-control">
+				<span th:if="${#fields.hasErrors('giocatore.nome')}" th:errors="${giocatore.nome}" th:style="'color:red'">
+				</span>
+				<span th:if="${giocatoreError}" th:text="${giocatoreError}" th:style="'color:red'">
+				</span>
 				<label style="color: white; font-family: 'Chakra Petch';">Cognome giocatore:</label>
 				<input type="text" th:field="${giocatore.cognome}" class="input-text form-control">
+				<span th:if="${giocatoreError}" th:text="${giocatoreError}" th:style="'color:red'">
+				</span>
+				<span th:if="${#fields.hasErrors('giocatore.cognome')}" th:errors="${giocatore.cognome}" th:style="'color:red'">
+				</span>
 				<label style="color: white; font-family: 'Chakra Petch';">Data di nascita:</label>
 				<input type="date" th:field="${giocatore.birthDate}" class="input-text form-control">
 				<label style="color: white; font-family: 'Chakra Petch';">Ruolo:</label>

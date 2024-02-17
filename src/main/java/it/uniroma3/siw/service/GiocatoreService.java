@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.model.Giocatore;
+import it.uniroma3.siw.model.Squadra;
 import it.uniroma3.siw.repository.GiocatoreRepository;
 import it.uniroma3.siw.repository.SquadraRepository;
 import jakarta.transaction.Transactional;
@@ -30,7 +31,7 @@ public class GiocatoreService {
 		giocatoreRepository.save(giocatore);
 	}
 
-	public void edit(Giocatore giocatore, Long giocatoreId) {
+	public void edit(Giocatore giocatore, Long giocatoreId, Squadra squadra) {
 		// TODO Auto-generated method stub
 
 		Giocatore giocatore_personale= this.giocatoreRepository.findById(giocatoreId).orElse(null);
@@ -45,7 +46,7 @@ public class GiocatoreService {
 		giocatore_personale.setRuolo(giocatore.getRuolo());
 		giocatore_personale.setInizioTesseramento(giocatore.getInizioTesseramento());
 		giocatore_personale.setFineTesseramento(giocatore.getFineTesseramento());
-		giocatore_personale.setSquadra(giocatore.getSquadra());
+		giocatore_personale.setSquadra(squadra);
 		this.giocatoreRepository.save(giocatore_personale);
 	}
 
@@ -54,12 +55,10 @@ public class GiocatoreService {
 	}
 	
 	@Transactional
-	public boolean rimuoviGiocatore(Long giocatoreId) {
+	public void rimuoviGiocatore(Long giocatoreId) {
 		if(giocatoreRepository.existsById(giocatoreId)) {
-			giocatoreRepository.deleteById(giocatoreId);
-			return true; //ho trovato il disegno
+			giocatoreRepository.deleteById(giocatoreId);		
 		}
-		return false;
 	}
 	
 	

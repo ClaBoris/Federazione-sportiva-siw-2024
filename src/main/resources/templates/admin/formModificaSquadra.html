@@ -25,7 +25,7 @@
 		<div class="bg-dark p-4">
 			<h4 class="text-white">Federazione sportiva</h4>
 			<li><a class="text-home" aria-current="page" href="/">Home</a></li>
-			<li><a class="text-home" aria-current="page" href="/admin/squadre">Elenco squadre</a></li>
+			<li><a class="text-home" aria-current="page" href="/admin/elenco_squadre">Elenco squadre</a></li>
 			<li><a class="text-home" aria-current="page" href="/logout">Log-out</a></li>
 		</div>
 	</div>
@@ -40,13 +40,15 @@
 <body>
 		<div class="main-container">
 		<div class="form-container">
-			<form th:action="@{/admin/newSquadra/}+${squadra.id}" th:object="${squadra}" method="POST">
+			<form th:action="@{/admin/newSquadra/}+${squadra.id}" th:object="${squadra}" th:method="POST">
 				<h1 style="color: #fbba00; font-family: 'Chakra Petch';">Squadra</h1>
 	
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Nome squadra:</label>
 				<input type="text" th:field="${squadra.nome}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Anno fondazione:</label>
-				<input type="text" th:field="${squadra.annoFondazione}" class="input-text form-control">
+				<input type="date" th:field="${squadra.annoFondazione}" class="input-text form-control">
+				<label style="color: #fbba00; font-family: 'Chakra Petch';">Indirizzo:</label>
+				<input type="text" th:field="${squadra.indirizzoSede}" class="input-text form-control">
 				<label style="color: #fbba00; font-family: 'Chakra Petch';">Aggiungi presidente:</label>
 				<div th:if="${presidenti}"> 
 					<select id="presidente" th:field="${squadra.presidente}" class="input-select" style="color: #fbba00; font-family: 'Chakra Petch';">

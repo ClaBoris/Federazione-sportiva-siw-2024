@@ -17,9 +17,13 @@ public interface GiocatoreRepository extends CrudRepository<Giocatore,Long>{
 	@Query(value = "SELECT * FROM giocatore order by id desc limit :limit", nativeQuery = true)
 	public List<Giocatore> findTopN(@Param("limit") int limit);
 	
+	
 	List<Giocatore> findBySquadraId(Long squadraId);
+	
 	@Modifying
 	@Query("DELETE FROM Giocatore g WHERE g.squadra.id = :squadraId")
 	void eliminaDallaSquadraId(Long squadraId);
+	
+	
 
 }

@@ -29,7 +29,6 @@
 			<h4 class="text-white">Federazione sportiva</h4>
 			<li><a class="text-home" aria-current="page" href="/president/president_home">Home</a></li>
 			<li><a class="text-home" aria-current="page" href="/president/elenco_squadre">Dettagli delle squadre</a></li>
-			<li><a class="text-home" aria-current="page" href="/president/formNewGiocatore">Aggiungi giocatore</a></li>
 			<li><a class="text-home" aria-current="page" href="/logout">Logout</a></li>
 		</div>
 	</div>
@@ -50,9 +49,9 @@
 				<h1 style="color: white; font-family: 'Chakra Petch';" th:text="${squadra.nome}"> Nome della squadra</h1>
 	
 				<label style="color: white; font-family: 'Chakra Petch';">Anno Fondazione:</label>
-				<h6 th:text="${squadra.annoFondazione}" class="input-text form-control"></h6>
+				<h6 th:text="${squadra.annoFondazione}" class="input-text form-control" style="color: black; font-family: 'Chakra Petch';"></h6>
 				<label style="color: white; font-family: 'Chakra Petch';">Indirizzo sede:</label>
-				<h6 th:text="${squadra.indirizzoSede}" class="input-text form-control"></h6>
+				<h6 th:text="${squadra.indirizzoSede}" class="input-text form-control" style="color: black; font-family: 'Chakra Petch';"></h6>
 				<label style="color: white; font-family: 'Chakra Petch';">Giocatori:</label>
 				<div th:if="${!squadra.giocatori.isEmpty()}">
 					<ul>
@@ -63,8 +62,11 @@
 					</ul>
 				</div>
 				<div th:if="${squadra.giocatori.isEmpty()}">
-					<h2>LA SQUADRA NON HA GIOCATORI!!</h2>
+					<h4 style="color: white;">LA SQUADRA NON HA GIOCATORI!!</h4>
 				</div>
+				<div class="card-button">
+							<a th:href="@{'/president/formNewGiocatore/' + ${squadra.id}}" class="btn" id="link-btn" style="color: black;font-family: 'Chakra Petch'; line-height: 8.5px;"> aggiungi nuovo giocatore</a>
+						</div>
 			</div>
 		</div>
 </html>

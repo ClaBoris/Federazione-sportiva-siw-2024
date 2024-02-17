@@ -2,7 +2,6 @@ package it.uniroma3.siw.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +15,7 @@ import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Giocatore;
 import it.uniroma3.siw.model.Presidente;
 import it.uniroma3.siw.model.Squadra;
+import it.uniroma3.siw.repository.GiocatoreRepository;
 import it.uniroma3.siw.repository.PresidenteRepository;
 import it.uniroma3.siw.repository.SquadraRepository;
 import it.uniroma3.siw.service.GiocatoreService;
@@ -48,6 +48,9 @@ public class AdminController {
 
 	@Autowired
 	private PresidenteRepository presidenteRepository;
+	
+	@Autowired
+	private GiocatoreRepository giocatoreRepository;
 
 	/*************ADMIN_HOME**************/	
 
@@ -86,18 +89,20 @@ public class AdminController {
 			model.addAttribute("squadre", this.squadraRepository.findAll());
 			return "/admin/admin_home.html";
 		}else{
-			if(bindingResult.hasErrors()) {
+			if(bindingResult.hasErrors()) 
 				model.addAttribute("formNewSquadraNome", "Nome squadra già in uso");
-			}
+
 		}
 		return "/admin/formNewSquadra.html";
 
 	}
 
-	@GetMapping("/admin/rimuoviSquadraEGiocatori/{squadraId}")
+	@GetMapping("/admin/rimuoviSquadra/{squadraId}")
 	public String rimuoviSquadraEGiocatori(@PathVariable Long squadraId, Model model) {
-		// Codice per eliminare la squdra e i suoi giocatori
-		squadraService.rimuoviSquadraEGiocatori(squadraId);
+		// Codice per eliminare la squdra 
+		
+		
+		squadraService.rimuoviSquadra(squadraId);
 		model.addAttribute("squadre", this.squadraRepository.findAll());
 		return "/admin/squadre.html";
 	}
@@ -164,8 +169,10 @@ public class AdminController {
 			model.addAttribute("presidenti", this.presidenteRepository.findAll());
 			return "/admin/presidenti.html";
 		}else {
-			return "/admin/formNewPresidente.html";
+			if(bindingResult.hasErrors()) 
+				model.addAttribute("formNewPresidenteUSername", "Username già in uso");
 		}
+		return "/admin/formNewPresidente.html";
 	}
 
 	@GetMapping("admin/presidenti")

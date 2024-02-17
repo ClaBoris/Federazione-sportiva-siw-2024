@@ -8,7 +8,7 @@ body {
 	height: 80%;
 	background-image: url('../images/sfondo_president_home.jpg');
 	background-size: cover;
-
+	background-attachment: fixed;
 }
 
 .text-white {
@@ -21,4 +21,8 @@ body {
 	font-size: 200%;
 	color: white;
 	text-decoration: none;
+}
+
+.btn{
+	background-color: firebrick!important;
 }

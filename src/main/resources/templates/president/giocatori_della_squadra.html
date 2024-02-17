@@ -27,7 +27,6 @@
 			<h4 class="text-white">Federazione sportiva</h4>
 			<li><a class="text-home" aria-current="page" href="/president/president_home">Home</a></li>
 			<li><a class="text-home" aria-current="page" href="/president/elenco_squadre">Elenco delle squadre</a></li>
-			<li><a class="text-home" aria-current="page" href="/president/formNewGiocatore">Aggiungi giocatore</a></li>
 			<li><a class="text-home" aria-current="page" href="/logout">Log-out</a></li>
 		</div>
 	</div>
@@ -42,6 +41,10 @@
 
 <body>
 	<div class="main-container">
+		<h1 style="color: #E5E5E5; font-family: 'Chakra Petch';">
+			Elenco giocatori della squadra: <span th:text="${giocatori.get(0).squadra.nome}">
+			</span>
+		</h1>
 		<div class="container-main-scroller">
 			<table class="squadre-table">
 				<thead>

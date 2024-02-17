@@ -25,7 +25,7 @@ public class GiocatoreValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		// TODO Auto-generated method stub
 		  Giocatore giocatore= (Giocatore) target;
-	        if(giocatore.getNome() != null
+	        if(giocatore.getNome() != null && giocatore.getCognome()!=null
 	            && this.giocatoreRepository.existsByNome(giocatore.getNome())){
 	            errors.reject("giocatore.duplicate");
 	        }
